@@ -92,6 +92,6 @@ module.exports = {
     port: 4000,
     open: true, // сайт будет открываться сам при запуске npm run dev
     hot: true,
-		liveReload: true
+    liveReload: true
   }
 };

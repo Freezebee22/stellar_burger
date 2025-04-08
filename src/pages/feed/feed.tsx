@@ -4,12 +4,12 @@ import { TOrder } from '@utils-types';
 import { FC } from 'react';
 
 export const Feed: FC = () => {
-  /** TODO: взять переменную из стора */
-  const orders: TOrder[] = [];
+	/** TODO: взять переменную из стора */
+	const orders: TOrder[] = [];
 
-  if (!orders.length) {
-    return <Preloader />;
-  }
+	if (!orders.length) {
+		return <Preloader />;
+	}
 
-  <FeedUI orders={orders} handleGetFeeds={() => {}} />;
+	<FeedUI orders={orders} handleGetFeeds={() => {}} />;
 };

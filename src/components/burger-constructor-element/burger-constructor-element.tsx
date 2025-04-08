@@ -3,22 +3,22 @@ import { BurgerConstructorElementUI } from '@ui';
 import { BurgerConstructorElementProps } from './type';
 
 export const BurgerConstructorElement: FC<BurgerConstructorElementProps> = memo(
-  ({ ingredient, index, totalItems }) => {
-    const handleMoveDown = () => {};
+	({ ingredient, index, totalItems }) => {
+		const handleMoveDown = () => {};
 
-    const handleMoveUp = () => {};
+		const handleMoveUp = () => {};
 
-    const handleClose = () => {};
+		const handleClose = () => {};
 
-    return (
-      <BurgerConstructorElementUI
-        ingredient={ingredient}
-        index={index}
-        totalItems={totalItems}
-        handleMoveUp={handleMoveUp}
-        handleMoveDown={handleMoveDown}
-        handleClose={handleClose}
-      />
-    );
-  }
+		return (
+			<BurgerConstructorElementUI
+				ingredient={ingredient}
+				index={index}
+				totalItems={totalItems}
+				handleMoveUp={handleMoveUp}
+				handleMoveDown={handleMoveDown}
+				handleClose={handleClose}
+			/>
+		);
+	}
 );
