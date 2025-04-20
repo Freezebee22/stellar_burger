@@ -8,7 +8,9 @@ import { BurgerIngredients, BurgerConstructor } from '@components';
 
 export const ConstructorPageUI: FC<ConstructorPageUIProps> = ({
 	isIngredientsLoading,
-}) => (
+}) => {
+	console.log("Component ConstructorPageUI UPDATED!!!");
+	return (
 	<>
 		{isIngredientsLoading ? (
 			<Preloader />
@@ -25,4 +27,5 @@ export const ConstructorPageUI: FC<ConstructorPageUIProps> = ({
 			</main>
 		)}
 	</>
-);
+	);
+};
