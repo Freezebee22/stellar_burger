@@ -1,8 +1,11 @@
 import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
+import { useDispatch } from '@store';
 
 export const BurgerConstructor: FC = () => {
+const dispatch = useDispatch();
+
 	/** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
 	const constructorItems = {
 		bun: {
@@ -30,7 +33,7 @@ export const BurgerConstructor: FC = () => {
 		[constructorItems]
 	);
 
-	return null;
+	//return null;
 
 	return (
 		<BurgerConstructorUI
