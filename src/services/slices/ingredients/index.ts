@@ -28,15 +28,18 @@ const slice = createSlice({
         .addCase(fetchIngredients.pending, (state) => {
             state.isLoading = true;
             state.error = null;
+            console.log('pending');
         })
         .addCase(fetchIngredients.fulfilled, (state, action) => {
             state.isLoading = false;
             state.error = null;
             state.data = action.payload;
+            console.log('fulfilled');
         })
         .addCase(fetchIngredients.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.error;
+            console.log('rejected');
         });
     }
 });

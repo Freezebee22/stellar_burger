@@ -102,5 +102,5 @@ export const slice = createSlice({
     }
 });
 
-export const resetOrderModalData = slice.actions;
+export const { resetOrderModalData } = slice.actions;
 export const reducer = slice.reducer;
