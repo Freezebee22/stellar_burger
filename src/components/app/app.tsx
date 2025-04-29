@@ -19,7 +19,7 @@ import {
 	OrderInfo,
 	ProtectedRoute,
 } from '@components';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from '@store';
 import { fetchIngredients } from '../../services/slices/ingredients';
@@ -28,6 +28,8 @@ import { resetOrderModalData } from '../../services/slices/orders';
 const App = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const location = useLocation();
+	const state = location.state as { background?: Location };
 
 	useEffect(() => {
 		dispatch(fetchIngredients());
@@ -74,7 +76,7 @@ const App = () => {
 				<Route
 					path='/login'
 					element={
-						<ProtectedRoute>
+						<ProtectedRoute onlyUnAuth>
 							<Login />
 						</ProtectedRoute>
 					}
@@ -82,7 +84,7 @@ const App = () => {
 				<Route
 					path='/register'
 					element={
-						<ProtectedRoute>
+						<ProtectedRoute onlyUnAuth>
 							<Register />
 						</ProtectedRoute>
 					}
@@ -120,6 +122,42 @@ const App = () => {
 					}
 				/>
 			</Routes>
+			{state?.background && (
+			<Routes>
+				<Route
+				path='/ingredients/:id'
+				element={
+					<Modal title='Детали ингредиента' onClose={handleModalClose}>
+						<IngredientDetails />
+					</Modal>
+				}
+				/>
+			</Routes>
+			)}
+			{state?.background && (
+			<Routes>
+				<Route
+				path='/feed/:number'
+				element={
+					<Modal title='Детали заказа?' onClose={handleModalClose}>
+						<OrderInfo />
+					</Modal>
+				}
+				/>
+			</Routes>
+			)}
+			{state?.background && (
+			<Routes>
+				<Route
+				path='/profile/orders/:number'
+				element={
+					<Modal title='Детали заказа' onClose={handleModalClose}>
+						<OrderInfo />
+					</Modal>
+				}
+				/>
+			</Routes>
+			)}
 		</div>
 	);
 }

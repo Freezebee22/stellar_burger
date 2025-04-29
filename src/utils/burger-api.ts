@@ -5,6 +5,22 @@ const URL = process.env.BURGER_API_URL;
 
 const checkResponse = <T>(res: Response): Promise<T> =>
 	res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
+/*const checkResponse = async <T>(res: Response): Promise<T> => {
+    const contentType = res.headers.get('content-type');
+
+    if (!res.ok) {
+        // Попробуем получить текст ошибки, даже если это не JSON
+        const errorText = await res.text();
+        throw new Error(`Ошибка ${res.status}: ${errorText}`);
+    }
+
+    if (contentType && contentType.includes('application/json')) {
+        return res.json();
+    } else {
+        const rawText = await res.text();
+        throw new Error(`Ожидался JSON, но получен: ${rawText}`);
+    }
+};*/
 
 type TServerResponse<T> = {
 	success: boolean;
