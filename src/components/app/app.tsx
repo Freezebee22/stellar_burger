@@ -33,7 +33,7 @@ const App = () => {
 
 	useEffect(() => {
 		dispatch(fetchIngredients());
-	  }, [dispatch]);
+	}, [dispatch]);
 
 	const handleModalClose = () => {
 		navigate(-1);
@@ -43,14 +43,14 @@ const App = () => {
 	return (
 		<div className={styles.app}>
 			<AppHeader />
-			<Routes>
+			<Routes location={state?.background || location}>
 				<Route path='*' element={<NotFound404 />} />
 				<Route path='/' element={<ConstructorPage />} />
 				<Route path='/feed' element={<Feed />} />
 				<Route
 					path='/feed/:number'
 					element={
-						<Modal title='ZaVoZ' onClose={handleModalClose}>
+						<Modal title='Детали заказа' onClose={handleModalClose}>
 							<OrderInfo />
 						</Modal>
 					}
@@ -58,7 +58,7 @@ const App = () => {
 				<Route
 					path='/ingredients/:id'
 					element={
-						<Modal title='ZaVoZnya' onClose={handleModalClose}>
+						<Modal title='Детали ингредиента' onClose={handleModalClose}>
 							<IngredientDetails />
 						</Modal>
 					}
@@ -67,7 +67,7 @@ const App = () => {
 					path='/profile/orders/:number'
 					element={
 						<ProtectedRoute>
-							<Modal title='ZaVoZnyaha' onClose={handleModalClose}>
+							<Modal title='Детали заказа' onClose={handleModalClose}>
 								<OrderInfo />
 							</Modal>
 						</ProtectedRoute>
@@ -92,7 +92,7 @@ const App = () => {
 				<Route
 					path='/forgot-password'
 					element={
-						<ProtectedRoute>
+						<ProtectedRoute onlyUnAuth>
 							<ForgotPassword />
 						</ProtectedRoute>
 					}
@@ -100,7 +100,7 @@ const App = () => {
 				<Route
 					path='/reset-password'
 					element={
-						<ProtectedRoute>
+						<ProtectedRoute onlyUnAuth>
 							<ResetPassword />
 						</ProtectedRoute>
 					}
@@ -139,7 +139,7 @@ const App = () => {
 				<Route
 				path='/feed/:number'
 				element={
-					<Modal title='Детали заказа?' onClose={handleModalClose}>
+					<Modal title='Детали заказа' onClose={handleModalClose}>
 						<OrderInfo />
 					</Modal>
 				}
